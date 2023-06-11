@@ -5,6 +5,7 @@
 }
 .wrapper {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
@@ -12,17 +13,41 @@
     margin: 0 auto;
 }
 
-/* input form */
+/* form */
 .form {
     display: grid;
-    grid-template: repeat(4, 25px) / repeat(2, 200px);
-    gap: 5px 10px;
     align-items: center;
+    &__input {
+        grid-template: repeat(4, 25px) / 220px 180px;
+        gap: 5px 15px;
+    }
+    &__output {
+        grid-template: 25px / 220px 180px;
+        gap: 5px 15px;
+    }
+}
+
+.button {
+    width: 150px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    background-color: grey;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(163, 163, 163);
+    }
+    border-radius: 3px;
+}
+
+.load {
+    font-weight: 700;
 }
 
 /* scheme */
 .scheme {
-    height: 300px;
+    height: 200px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
