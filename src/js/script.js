@@ -16,7 +16,7 @@ function setValue(el, value) {
     el.innerText = value
 };
 
-function initializeValues () {
+function getValues () {
     plateThickness = document.querySelector("#plate_t").value
     loadWidth = document.querySelector("#load_w").value
     beamHeight = document.querySelector("#beam_h").value
@@ -26,15 +26,21 @@ function initializeValues () {
 }
 
 function createSection() {
-    initializeValues()
+    getValues()
 
     drawSection(plate, loadWidth / calculateFactor(), plateThickness / calculateFactor())
-    drawSection(beam, beamWidth / calculateFactor(), beamHeight / calculateFactor())
+
+    if(isBeam() == true) {
+        drawSection(beam, beamWidth / calculateFactor(), beamHeight / calculateFactor())
+        setValue(beamWidthDim, beamWidth)
+        setValue(beamHeightDim, beamHeight)
+        beam.style.display = 'block'
+    } else {
+        beam.style.display = 'none'
+    }
 
     setValue(plateThicknessDim, plateThickness)
     setValue(plateWidthDim, loadWidth)
-    setValue(beamWidthDim, beamWidth)
-    setValue(beamHeightDim, beamHeight)
 };
 
 createSectionButton.addEventListener('click', () => {
@@ -42,7 +48,7 @@ createSectionButton.addEventListener('click', () => {
 });
 
 function calculateFactor() {
-    initializeValues()
+    getValues()
 
     f = loadWidth / 300
 
@@ -56,12 +62,12 @@ function drawSection(el, width, height) {
 
 //calculate load
 function calculateLoad() {
-    initializeValues()
+    getValues()
 
-    if(beamWidth == 0 || beamHeight == 0) {
-        load = (plateThickness/1000*2500*9.81/1000*1.2+3.5)*loadWidth/1000
-    } else {
+    if(isBeam() == true) {
         load = (plateThickness/1000*2500*9.81/1000*1.2+3.5)*loadWidth/1000 + (beamHeight/1000*2500*9.81/1000*1.2)*beamWidth/1000
+    } else {
+        load = (plateThickness/1000*2500*9.81/1000*1.2+3.5)*loadWidth/1000
     }
 
     return load = Number(load.toFixed(2))
@@ -73,5 +79,21 @@ function getLoad() {
 }
 
 calculateLoadButton.addEventListener('click', () => {
+    createSection()
     getLoad()
 });
+
+//beam check
+
+function isBeam() {
+    getValues()
+
+    /* beamHeight && beamWidth ? a = true : a = false
+    return a */
+
+    if(beamHeight && beamHeight) {
+        return true
+    } else {
+        return false
+    }
+}
