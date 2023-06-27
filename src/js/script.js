@@ -1,9 +1,11 @@
 //init
 const plate = document.querySelector(".plate")
 const beam = document.querySelector(".beam")
+const checkbox = document.querySelector('#beam-show')
 
 const plateWidthDim = document.querySelector("#plate-width")
 const plateThicknessDim = document.querySelector("#plate-thickness")
+const beamProps = document.querySelector("#beam-props")
 const beamWidthDim = document.querySelector("#beam-width")
 const beamHeightDim = document.querySelector("#beam-height")
 const loadValueOutput = document.querySelector("#loadValue")
@@ -114,4 +116,24 @@ function isBeam() {
     } else {
         return false
     }
+}
+
+checkbox.addEventListener('click', () => {
+    beamCheck()
+})
+
+function beamCheck() {
+    if(checkbox.checked == true) {
+        beamPropsShow()
+    } else {
+        beamPropsHide()
+    }
+}
+
+function beamPropsShow() {
+    beamProps.style.display = 'grid'
+}
+
+function beamPropsHide() {
+    beamProps.style.display = 'none'
 }

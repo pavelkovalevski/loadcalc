@@ -11,20 +11,26 @@
     <h1>Расчет нагрузок</h1>
     <div class="wrapper">
         <div class="form form__input">
-            <div>Толщина плиты <b>t</b>, мм</div>
-            <input id="plate_t" type="number" class="input">
-            <div>Ширина грузовой полосы <b>L</b>, мм</div>
-            <input id="load_w" type="number" class="input">
-            <!-- <div class="form__beam-check">
+            <div class="form__props-wrapper">
+                <div>Толщина плиты <b>t</b>, мм</div>
+                <input id="plate_t" type="number" class="input">
+                <div>Ширина грузовой полосы <b>L</b>, мм</div>
+                <input id="load_w" type="number" class="input">
+            </div>
+            <div class="form__beam-check">
                 <div>Балка</div>
-                <input id="beam-check" type="checkbox">
-            </div> -->
-            <div>Высота балки <b>h</b>, мм</div>
-            <input id="beam_h" type="number" class="input">
-            <div>Толщина балки <b>w</b>, мм</div>
-            <input id="beam_w" type="number" class="input">
-            <div id="create-section" class="button">Построить сечение</div>
-            <div id="calculate-load" class="button">Расчитать</div>
+                <input id="beam-show" type="checkbox">
+            </div>
+            <div id="beam-props" class="form__props-wrapper beam-props">
+                <div>Высота балки <b>h</b>, мм</div>
+                <input id="beam_h" type="number" class="input">
+                <div>Толщина балки <b>w</b>, мм</div>
+                <input id="beam_w" type="number" class="input">
+            </div>
+            <div class="form__btns-wrapper">
+                <div id="create-section" class="button">Построить сечение</div>
+                <div id="calculate-load" class="button">Расчитать</div>
+            </div>
         </div>
         <div class="scheme">
             <div class="section">
